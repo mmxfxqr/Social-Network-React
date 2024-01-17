@@ -1,18 +1,22 @@
-.wrapper{
+.wrapper {
   width: 100%;
 }
-.container{
+.container {
   max-width: 1310px;
   padding: 0px 15px;
   margin: 0 auto;
 }
-.mainPage__inner{
+.app__inner {
   display: grid;
   margin: 0 auto;
-  grid-template-areas: 
-  "h h"
-  "n c";
+  grid-template-areas:
+    "h h"
+    "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
+}
+.app__inner-content {
+  grid-area: c;
+  background-color: blue;
 }

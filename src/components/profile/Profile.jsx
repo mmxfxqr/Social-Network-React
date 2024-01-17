@@ -3,7 +3,7 @@ import s from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 const Profile = () => {
   return (
-    <div className={s.content}>
+    <div>
       <div>
         <img src="https://imgholder.ru/600x200/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson"></img>
       </div>
