@@ -2,5 +2,11 @@
   grid-area: n;
   display: flex;
   flex-direction: column;
-  background-color: blanchedalmond;
+  background-color: rgb(218, 247, 166);
+}
+.item{
+  color:gray
+}
+.item a.active{
+  color: black;
 }
