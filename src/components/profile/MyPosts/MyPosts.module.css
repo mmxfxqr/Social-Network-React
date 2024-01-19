@@ -1,0 +1,14 @@
+.myPostsBlock{
+    padding: 10px;
+}
+.writePost{
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+.writePost button{
+    margin-top: 5px;
+    max-width: 80px;
+    margin-left: auto;
+}

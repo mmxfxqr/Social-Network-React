@@ -1,14 +1,13 @@
 import React from "react";
-import s from './Profile.module.css';
+import s from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+
 const Profile = () => {
   return (
     <div>
-      <div>
-        <img src="https://imgholder.ru/600x200/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson"></img>
-      </div>
-      <div>ava + description</div>
-      <MyPosts/>
+      <ProfileInfo />
+      <MyPosts />
     </div>
   );
 };

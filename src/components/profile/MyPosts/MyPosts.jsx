@@ -3,9 +3,9 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 const MyPosts = () => {
   return (
-      <div>
+      <div className={s.myPostsBlock}>
         My Post:
-        <div>
+        <div className={s.writePost}>
           <textarea></textarea>
           <button>Add post</button>
         </div>
@@ -15,7 +15,7 @@ const MyPosts = () => {
           
         </div>
       </div>  
-  );
+  );  
 };
 
 export default MyPosts;
