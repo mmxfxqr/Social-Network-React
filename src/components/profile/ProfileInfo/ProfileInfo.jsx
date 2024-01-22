@@ -1,10 +1,11 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
+import headProfile from "../../../images/headProfile.jpg"
 const ProfileInfo = (props) => {
     return(
       <div className={s.profileInfo}>
         <div>
-          <img src="https://imgholder.ru/600x200/8493a8/adb9ca&text=IMAGE+HOLDER&font=kelson"></img>
+          <img src={headProfile}></img>
         </div>
         <div className={s.descriptionBlock}>ava + description</div>
       </div>

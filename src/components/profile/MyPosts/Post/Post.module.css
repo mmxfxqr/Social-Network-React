@@ -1,5 +1,35 @@
+.item {
+  margin-bottom: 25px;
+  border: 5px solid #e0ebf0;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  display: flex; /* добавлено */
+}
 
-.item img{
-  max-width: 50px;
+.item:last-child {
+  margin-bottom: 0px;
+}
+
+.item img {
+  max-width: 40px;
   border-radius: 50%;
+}
+
+.postInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.postInfo img {
+  margin-right: 10px;
+}
+
+.likeCount {
+  min-width: 60px;
+  margin-left: auto;
+  margin-top: auto;
+  text-align: right;
 }

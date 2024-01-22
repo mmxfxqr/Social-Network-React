@@ -4,16 +4,23 @@
 }
 .dialogsItems {
   padding: 10px;
-  color:gray;
+}
+.name { 
+  color: grey;
 }
 .dialog {
+  margin-bottom: 10px;
 }
 .messages {
   padding: 10px;
 }
 .message {
+  margin-bottom: 10px;
 }
-.dialogsItems .active{
+.message:last-child{
+  margin-bottom: 0px;
+}
+a.active{
   color: black;
   font-weight: bold;
 }

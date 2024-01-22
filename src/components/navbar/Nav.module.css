@@ -2,12 +2,15 @@
   grid-area: n;
   display: flex;
   flex-direction: column;
-  background-color: rgb(218, 247, 166);
+  background-color: #e0ebf0;
 }
 .item{
-  color:gray
+  color:gray;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 .item a.active{
   color: black;
   font-weight: bold;
+  margin-left: 10px;
 }
