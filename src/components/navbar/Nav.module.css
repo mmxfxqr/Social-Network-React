@@ -9,7 +9,7 @@
   margin-top: 5px;
   margin-left: 10px;
 }
-.item a.active{
+.active{
   color: black;
   font-weight: bold;
   margin-left: 10px;

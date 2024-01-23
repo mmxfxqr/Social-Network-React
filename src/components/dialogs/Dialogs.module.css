@@ -6,21 +6,65 @@
   padding: 10px;
 }
 .name { 
-  color: grey;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.555);
+  transition: color 0.3s ease;
 }
 .dialog {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
+.dialog img{
+  max-width: 40px;
+  margin-right: 5px;
+}
+
+
+
 .messages {
   padding: 10px;
 }
 .message {
   margin-bottom: 10px;
+  
 }
 .message:last-child{
   margin-bottom: 0px;
 }
+.writeMessage{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.writeMessage button {
+  margin-top: 10px;
+  max-width: 80px;
+  margin-right: 25px;
+  margin-left: auto;
+  min-height: 30px;
+
+  background-color: rgb(164, 233, 164);
+  padding: 5px;
+  min-width: 70px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+.messages textarea {
+  padding: 5px;
+  margin-top: 5px;
+  width: 860px;
+  border-radius: 10px;
+  background-color: #e0ebf0;
+  min-height: 75px;
+  appearance: unset;
+  overflow: auto;
+}
 a.active{
   color: black;
-  font-weight: bold;
+  font-weight: 700;
+  transition: color 0.3s ease;
 }

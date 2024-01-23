@@ -4,7 +4,7 @@ import Header from "./components/header/Header";
 import Nav from "./components/navbar/Nav";
 import Profile from "./components/profile/Profile";
 import Dialogs from "./components/dialogs/Dialogs";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
@@ -12,7 +12,6 @@ import Settings from "./components/settings/Settings";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="wrapper">
         <div className="container">
           <div className="app__inner">
@@ -30,7 +29,6 @@ const App = (props) => {
           </div>
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 export default App;
