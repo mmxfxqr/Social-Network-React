@@ -19,8 +19,8 @@ const App = (props) => {
             <Nav />
             <div className="app__inner-content">
               <Routes>
-                <Route path="/profile" element={<Profile state={props.state.profilePage}/>} />
-                <Route path="/dialogs/*" element={<Dialogs state={props.state.messagesPage}/>} />
+                <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>} />
+                <Route path="/dialogs/*" element={<Dialogs messagePage={props.state.messagesPage} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>} />
                 <Route path="/news" element={<News />} />
                 <Route path="/music" element={<Music />} />
                 <Route path="/settings" element={<Settings/>} />
