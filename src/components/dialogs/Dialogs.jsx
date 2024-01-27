@@ -11,22 +11,25 @@ const Dialogs = (props) => {
     <MessageItem message={m.message} key={m.id} />
   ));
 
-
   let newMessageElement = React.createRef();
   let addMessage = () => {
-    props.store.addMessage();
-  }
+    props.dispatch({type:'ADD-MESSAGE'});
+  };
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.store.updateNewMessageText(text);
-  }
+    props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText : text});
+  };
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogElements}</div>
       <div className={s.messages}>
         {messagesElements}
         <div className={s.writeMessage}>
-          <textarea onChange={onMessageChange} ref={newMessageElement} value={props.messagePage.newMessageText}/>
+          <textarea
+            onChange={onMessageChange}
+            ref={newMessageElement}
+            value={props.messagePage.newMessageText}
+          />
           <button onClick={addMessage}>Send</button>
         </div>
       </div>

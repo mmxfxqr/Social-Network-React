@@ -27,7 +27,7 @@ a:hover {
 
 .wrapper {
   width: 100%;
-  background-color: #575e5f91;
+  background: linear-gradient(to bottom, #7381a1, #8d99ae, #e0ebf0);
 }
 .container {
   max-width: 1310px;
