@@ -1,5 +1,8 @@
 #root{
   font-family: "Comfortaa", sans-serif;
+  font-weight: 500;
+  color: #25272b;
+  letter-spacing: 1px;
 }
 textarea {
   appearance: none;

@@ -1,19 +1,22 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/store";
 const MyPosts = (props) => {
+  
+
   let postsElements = props.posts.map((p) => (
     <Post message={p.message} like__count={p.like__count} />
   ));
   let addPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
     let text = addPostElement.current.value;
-    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+    props.dispatch(updateNewPostTextActionCreator(text));
   };
   return (
     <div className={s.myPostsBlock}>
@@ -25,7 +28,7 @@ const MyPosts = (props) => {
         />
         <button onClick={addPost}>Add post</button>
       </div>
-      My Post:
+      <strong>My Post:</strong>
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
