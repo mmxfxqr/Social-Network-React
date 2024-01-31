@@ -6,11 +6,6 @@ import ava5 from "../images/avatars/5.png";
 import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = ''
-
 let store = {
   _state: {
     profilePage: {
@@ -59,10 +54,6 @@ let store = {
     this._callSubscriber();
   },
 };
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextActionCreator = (text) => ({type:UPDATE_NEW_MESSAGE_TEXT, newText:text});
 
 window.store = store;
 export default store;
