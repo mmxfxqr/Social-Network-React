@@ -3,11 +3,12 @@ import "./App.css";
 import Header from "./components/header/Header";
 import Nav from "./components/navbar/Nav";
 import Profile from "./components/profile/Profile";
-import Dialogs from "./components/dialogs/Dialogs";
+
 import { Routes, Route } from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 
 const App = (props) => {
   return (
@@ -22,17 +23,15 @@ const App = (props) => {
                 path="/profile"
                 element={
                   <Profile
-                    profilePage={props.state.profilePage}
-                    dispatch = {props.dispatch}
+                    store={props.store}
                   />
                 }
               />
               <Route
                 path="/dialogs/*"
                 element={
-                  <Dialogs
-                    messagePage={props.state.messagesPage}
-                    dispatch = {props.dispatch}
+                  <DialogsContainer
+                  store = {props.store}
                   />
                 }
               />
