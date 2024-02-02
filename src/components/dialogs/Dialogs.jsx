@@ -6,15 +6,16 @@ import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../.
 
 
 const Dialogs = (props) => {
-  let dialogElements = props.dialogs.map((d) => (
+  let dialogElements = props.messagesPage.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} ava={d.ava} key={d.id} />
   ));
-  let messagesElements = props.messages.map((m) => (
+  let messagesElements = props.messagesPage.messages.map((m) => (
     <MessageItem message={m.message} key={m.id} />
   ));
 
   let newMessageElement = React.createRef();
   let onAddMessage = () => {
+    debugger;
     props.addMessage()
   };
   let onMessageChange = () => {
@@ -24,13 +25,13 @@ const Dialogs = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogElements}</div>
-      <div className={s.messages}>
+      <div className={s.messages}>  
         <div>{messagesElements}</div>
         <div className={s.writeMessage}>
           <textarea
             onChange={onMessageChange}
             ref={newMessageElement}
-            value={props.newMessageText}
+            value={props.profilePage.newMessageText}
           />
           <button onClick={onAddMessage}>Send</button>
         </div>
