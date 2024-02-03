@@ -3,8 +3,8 @@ import ava2 from "../images/avatars/2.png";
 import ava3 from "../images/avatars/3.png";
 import ava4 from "../images/avatars/4.png";
 import ava5 from "../images/avatars/5.png";
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = ''
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "";
 
 let initialState = {
   dialogs: [
@@ -20,24 +20,32 @@ let initialState = {
     { id: 3, message: "Bye" },
   ],
   newMessageText: "",
-}
+};
 const dialogsReducer = (state = initialState, action) => {
-  switch(action.type){
-    case ADD_MESSAGE:
+  switch (action.type) {
+    case ADD_MESSAGE: {
       let newMessage = {
         id: 4,
         message: state.newMessageText,
       };
-      state.messages.push(newMessage);
-      state.newMessageText = "";
-      return state;
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.messages = [...state.messages]
+      stateCopy.messages.push(newMessage);
+      stateCopy.newMessageText = "";
+      return stateCopy;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newMessageText = action.newText;
+      return stateCopy;
+    }
     default:
       return state;
   }
 };
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextActionCreator = (text) => ({type:UPDATE_NEW_MESSAGE_TEXT, newText:text});
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  newText: text,
+});
 export default dialogsReducer;
