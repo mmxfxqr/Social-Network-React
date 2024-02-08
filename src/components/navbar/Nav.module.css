@@ -16,3 +16,6 @@
   margin-left: 10px;
   letter-spacing: normal;
 }
+.item:last-child{
+    margin-top: 15px;
+}
