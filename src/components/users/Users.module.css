@@ -1,3 +1,7 @@
 .photo{
     width: 80px;
 }
+.selectedPage{
+    text-decoration: underline;
+    font-weight: 700;
+}
