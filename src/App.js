@@ -2,13 +2,13 @@ import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import Nav from "./components/navbar/Nav";
-import Profile from "./components/profile/Profile";
 import { Routes, Route } from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
+import ProfileContainer from "./components/profile/ProfileContainer";
 
 const App = (props) => {
   return (
@@ -20,9 +20,9 @@ const App = (props) => {
           <div className="app__inner-content">
             <Routes>
               <Route
-                path="/profile"
+                path="/profile/*"
                 element={
-                  <Profile
+                  <ProfileContainer
                     
                   />
                 }

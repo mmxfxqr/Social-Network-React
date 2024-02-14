@@ -1,7 +1,14 @@
-.profileInfo img{
+.headerImage{
     width: 100%;
     height: 200px;
 }
+.avatarImage{
+    width: 250px;
+    height: 250px;
+    margin-right: 20px;
+}
 .descriptionBlock{
+    display: flex;
+    align-items: center;
     padding: 10px;
 }
