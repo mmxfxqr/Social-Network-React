@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  followActionCreator,
-  setCurrentPageActionCreator,
-  setUsersActionCreator,
-  setUsersTotalCountActionCreator,
-  toggleIsFetchingActionCreator,
-  unfollowActionCreator,
+  follow,
+  setCurrentPage,
+  setUsers,
+  setTotalUsersCount,
+  toggleIsFetching,
+  unfollow,
 } from "../../redux/users-reducer";
 import axios from "axios";
 import Users from "./Users";
@@ -43,7 +43,7 @@ class UsersAPIComponent extends React.Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader/> : null}
+        {this.props.isFetching ? <Preloader /> : null}
         <Users
           totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
@@ -66,37 +66,41 @@ let mapStateToProps = (state) => {
     isFetching: state.usersPage.isFetching,
   };
 };
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userID) => {
-      let action = followActionCreator(userID);
-      dispatch(action);
-    },
-    unfollow: (userID) => {
-      let action = unfollowActionCreator(userID);
-      dispatch(action);
-    },
-    setUsers: (users) => {
-      let action = setUsersActionCreator(users);
-      dispatch(action);
-    },
-    setCurrentPage: (pageNumber) => {
-      let action = setCurrentPageActionCreator(pageNumber);
-      dispatch(action);
-    },
-    setTotalUsersCount: (totalCount) => {
-      let action = setUsersTotalCountActionCreator(totalCount);
-      dispatch(action);
-    },
-    toggleIsFetching: (isFetching) => {
-      let action = toggleIsFetchingActionCreator(isFetching);
-      dispatch(action);
-    },
-  };
-};
+// let mapDispatchToProps = (dispatch) => {
+//   return {
+//     follow: (userID) => {
+//       let action = followActionCreator(userID);
+//       dispatch(action);
+//     },
+//     unfollow: (userID) => {
+//       let action = unfollowActionCreator(userID);
+//       dispatch(action);
+//     },
+//     setUsers: (users) => {
+//       let action = setUsersActionCreator(users);
+//       dispatch(action);
+//     },
+//     setCurrentPage: (pageNumber) => {
+//       let action = setCurrentPageActionCreator(pageNumber);
+//       dispatch(action);
+//     },
+//     setTotalUsersCount: (totalCount) => {
+//       let action = setUsersTotalCountActionCreator(totalCount);
+//       dispatch(action);
+//     },
+//     toggleIsFetching: (isFetching) => {
+//       let action = toggleIsFetchingActionCreator(isFetching);
+//       dispatch(action);
+//     },
+//   };
+// };
 
-const UsersContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UsersAPIComponent);
+const UsersContainer = connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFetching,
+})(UsersAPIComponent);
 export default UsersContainer;
