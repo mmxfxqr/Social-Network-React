@@ -20,10 +20,9 @@ const App = (props) => {
           <div className="app__inner-content">
             <Routes>
               <Route
-                path="/profile/*"
+                path="/profile/:userId?"
                 element={
                   <ProfileContainer
-                    
                   />
                 }
               />
