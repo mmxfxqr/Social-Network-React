@@ -2,6 +2,8 @@ import React from "react";
 import userPhoto from "../../images/avatars/4.png";
 import s from "./Users.module.css";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { deleteUnfollow, postFollow } from "../../api/Api";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -31,7 +33,7 @@ let Users = (props) => {
         <div key={u.id}>
           <span>
             <div>
-              <NavLink to={`/profile/` +  u.id}>
+              <NavLink to={`/profile/` + u.id}>
                 <img
                   src={u.photos.small != null ? u.photos.small : userPhoto}
                   className={s.photo}
@@ -42,7 +44,13 @@ let Users = (props) => {
               {u.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(u.id);
+                    deleteUnfollow(u.id)
+                      .then((data) => {
+                        if (data.resultCode === 0){
+                          props.unfollow(u.id);
+                        }
+                       
+                      });
                   }}
                 >
                   Unfollow
@@ -50,7 +58,14 @@ let Users = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(u.id);
+                   postFollow(u.id)
+                      .then((data) => {
+                        if (data.resultCode === 0){
+                          props.follow(u.id);
+                        }
+                       
+                      });
+                   
                   }}
                 >
                   Follow
