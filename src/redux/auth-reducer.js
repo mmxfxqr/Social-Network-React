@@ -1,3 +1,5 @@
+import { getAuthMeName } from "../api/Api";
+
 const SET_USER_DATA = "SET_USER_DATA";
 const UNFOLLOW = "UNFOLLOW";
 
@@ -22,5 +24,13 @@ const authReducer = (state = initialState, action) => {
 };
 export const setAuthUserData = (userID, email, login) => ({ type: SET_USER_DATA, data : {userID,email,login} });
 
+export const setAuthUser = () => {
+  return (dispatch) => {
+    getAuthMeName().then((data) => {
+      let { id, email, login } = data;
+      dispatch(setAuthUserData(id, email, login));
+    });
+  };
+};
 
 export default authReducer;

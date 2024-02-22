@@ -1,3 +1,5 @@
+import { deleteUnfollow, getUsersAPI, postFollow } from "../api/Api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -12,7 +14,7 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true,
-  followingInProgress: []
+  followingInProgress: [],
 };
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -49,14 +51,19 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, isFetching: action.isFetching };
     }
     case TOGGLE_IS_FOLLOWING_PROGRESS: {
-      return { ...state, followingInProgress : action.isFetching ? [...state.followingInProgress, action.userID] : state.followingInProgress.filter(id => id != action.userID)};
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userID]
+          : state.followingInProgress.filter((id) => id != action.userID),
+      };
     }
     default:
       return state;
   }
 };
-export const follow = (userID) => ({ type: FOLLOW, userID });
-export const unfollow = (userID) => ({
+export const followSuccess = (userID) => ({ type: FOLLOW, userID });
+export const unfollowSuccess = (userID) => ({
   type: UNFOLLOW,
   userID,
 });
@@ -73,10 +80,42 @@ export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
-export const toggleIsFollowing= (isFetching, userID) => ({
+export const toggleIsFollowing = (isFetching, userID) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS,
   isFetching,
-  userID
+  userID,
 });
 
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    getUsersAPI(currentPage, pageSize).then((data) => {
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+  };
+};
+export const unfollow = (userID) => {
+  return (dispatch) => {
+    dispatch(toggleIsFollowing(true, userID));
+    deleteUnfollow(userID).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(unfollowSuccess(userID));
+      }
+      dispatch(toggleIsFollowing(false, userID));
+    });
+  };
+};
+export const follow = (userID) => {
+  return (dispatch) => {
+    dispatch(toggleIsFollowing(true, userID));
+    postFollow(userID).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(followSuccess(userID));
+      }
+      dispatch(toggleIsFollowing(false, userID));
+    });
+  };
+};
 export default usersReducer;
