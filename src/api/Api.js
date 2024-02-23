@@ -31,5 +31,5 @@ export const getProfileAPI = (userId) => {
 export const getAuthMeName = () => {
   return instance
     .get(`auth/me`)
-    .then((response) => response.data.data);
+    
 };
