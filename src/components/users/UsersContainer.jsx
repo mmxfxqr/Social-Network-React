@@ -1,14 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  follow,
-  setCurrentPage,
-  unfollow,
-} from "../../redux/users-reducer";
+import { follow, setCurrentPage, unfollow } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 import { toggleIsFollowing } from "../../redux/users-reducer";
-import {getUsers} from "../../redux/users-reducer";
+import { getUsers } from "../../redux/users-reducer";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 class UsersAPIComponent extends React.Component {
   componentDidMount() {
@@ -47,11 +45,13 @@ let mapStateToProps = (state) => {
   };
 };
 
-const UsersContainer = connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  toggleIsFollowing,
-  getUsers,
-})(UsersAPIComponent);
-export default UsersContainer;
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setCurrentPage,
+    toggleIsFollowing,
+    getUsers,
+  })
+)(UsersAPIComponent);
