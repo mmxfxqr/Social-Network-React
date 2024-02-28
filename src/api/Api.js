@@ -33,3 +33,9 @@ export const getAuthMeName = () => {
     .get(`auth/me`)
     
 };
+export const getUserStatus = (userId) => {
+  return instance.get(`/profile/status/${userId}`)
+}
+export const updateUserStatus = (status) => {
+  return instance.put(`/profile/status`, {status})
+}
